@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/js/jquery-3.3.1.min.js"></script>
+</head>
+<script>
+    <!--$(function() {-->
+        <!--$(document).ready(function () {-->
+            <!--$("#referenceHead").load('index.html');-->
+        <!--}-->
+    <!--});-->
+function loadXMLDoc()
+{
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	{
+		// IE7+, Firefox, Chrome, Opera, Safari ä¯ÀÀÆ÷Ö´ÐÐ´úÂë
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{
+		// IE6, IE5 ä¯ÀÀÆ÷Ö´ÐÐ´úÂë
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+			var obj = JSON.parse(xmlhttp.responseText);
+			var tab=document.getElementById("infomation");
+			addtr(tab,obj);
+		}
+	}
+	xmlhttp.open("GET","/demo/home2",true);
+	xmlhttp.send();
+}
+function addtr(tab,obj){
+    var ntr = tab.insertRow();
+    var td0 = ntr.insertCell();
+    var td1 = ntr.insertCell();
+    var td2 = ntr.insertCell();
+    var td3 = ntr.insertCell();
+    td0.innerText = obj.addr;
+    td1.innerText = obj.name;
+    td2.innerText = obj.age;
+    td3.innerHTML = '<input type="button" class="btn btn-default btn-xs" onclick="loadXMLDoc()" value = "Ìí¼Ó">';
+}
+</script>
+<body class="bg-light">
+<div class="jumbotron container-fluid">
+<main role="main" class="container">
+    <div class="page-header d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
+        <h1>Example page header <small>Subtext for header</small></h1>
+    </div>
+    <div class="table-responsive my-3 p-3 bg-white rounded box-shadow" >
+        <table class="table media text-muted pt-3" id = "infomation" >
+            <thead>
+            <tr>
+                <th>Student-ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Grade</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>001</td>
+                <td>Rammohan </td>
+                <td>Reddy</td>
+                <td>A+</td>
+            </tr>
+            <tr>
+                <td>002</td>
+                <td>Smita</td>
+                <td>Pallod</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>003</td>
+                <td>Rabindranath</td>
+                <td>Sen</td>
+                <td><button type="button" class="btn btn-default btn-xs" onclick="loadXMLDoc()">Ìí¼Ó</button></td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="myDiv"></div>
+    </div>
+</main>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4 col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Card title</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Card title</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="http://via.placeholder.com/318x180" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Card title Card title Card title Card title Card title Card title</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
